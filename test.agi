@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+from asterisk import *
+
+TIMEOUT=30000
+
+agi = agi.AGI()
+
+agi.answer()
+agi.say_digits('666')
+digit_0 = agi.wait_for_digit(timeout=TIMEOUT)
+digit_1 = agi.wait_for_digit(timeout=TIMEOUT)
+digit_2 = agi.wait_for_digit(timeout=TIMEOUT)
+digit_3 = agi.wait_for_digit(timeout=TIMEOUT)
+agi.say_digits(digit_0)
+agi.say_digits(digit_1)
+agi.say_digits(digit_2)
+agi.say_digits(digit_3)
+agi.hangup()

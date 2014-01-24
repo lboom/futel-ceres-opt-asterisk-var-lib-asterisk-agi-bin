@@ -7,6 +7,7 @@ import os, errno
 import uuid
 from asterisk import *
 import util
+import statements
 
 agi = agi.AGI()
 
@@ -48,10 +49,14 @@ def prompt_and_record(agi_o, statement, username):
     #agi_o.appexec('playback', path) # testing
     agi_o.appexec('wait', 0.25)
 
-def main():
+def record_statements(statements):
     username = get_username()
-    prompt_and_record(agi, "welcome-to-fewtel-one", username)
-    #prompt_and_record("welcome to fewtel two", username)
+    for statement in statements:
+        prompt_and_record(agi, statement, username)
+    
+
+def main():
+    record_statements(statements.statements)
 
 agi.answer()
 util.agi_tracebacker(agi, main)

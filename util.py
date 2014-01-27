@@ -1,4 +1,11 @@
-import sys, traceback
+import sys, os, traceback
+
+# directories for gsm files, in order of preference
+statement_dirs = [
+    '/opt/asterisk/var/lib/asterisk/sounds/recordings/karl_foo/',
+    '/opt/asterisk/var/lib/asterisk/sounds/recordings/karl_bar/',
+    '/opt/asterisk/var/lib/asterisk/sounds/en/'
+    ]
 
 def agi_tracebacker(agi_o, func, *args, **kwargs):
     try:
@@ -11,8 +18,10 @@ def agi_tracebacker(agi_o, func, *args, **kwargs):
         raise
 
 def say(agi_o, filename):
-    #path = '/var/lib/asterisk/sounds/custom/' + filename
-    #return agi.appexec('background', path)
-    # XXX for testing, use noninterrupting festival
-    # XXX this seems to be parsed into args, punctuation may break it
-    agi_o.appexec('festival', filename)
+    for statement_dir in statement_dirs:
+        path = statement_dir + filename
+        # must check for file existence, agi won't return or raise meaningfully
+        if os.path.isfile(path + '.gsm'):
+            return agi_o.stream_file(path)
+    # this seems to be parsed into args, punctuation may break it
+    return agi_o.appexec('festival', filename)

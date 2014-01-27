@@ -37,22 +37,20 @@ def statement_path(statement, username):
     return os.path.join(path, statement_to_filename(statement))
 
 def prompt_and_record(agi_o, statement, username):
-    util.say(agi_o, 'please-repeat-after-the-beep')
-    agi_o.appexec('wait', 0.1)
-    util.say(agi_o, 'then-press-pound')
-    agi_o.appexec('wait', 0.25)
+    util.say(agi_o, 'please-repeat-after-the-beep-then-press-pound')
     util.say(agi_o, statement)
     path = statement_path(statement, username)
     path_in = path  + ':gsm'
     agi_o.appexec('record', path_in)
     util.say(agi_o, 'thank-you')
     #agi_o.appexec('playback', path) # testing
-    agi_o.appexec('wait', 0.25)
 
 def record_statements(statements):
     username = get_username()
+    util.say(agi, 'hello')
     for statement in statements:
         prompt_and_record(agi, statement, username)
+    util.say(agi, 'goodbye')
     
 
 def main():

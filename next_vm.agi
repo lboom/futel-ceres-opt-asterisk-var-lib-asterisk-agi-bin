@@ -5,7 +5,7 @@ import util
 
 agi = agi.AGI()
 
-ASTERISK_DIR = '/opt/asterisk/asterisk'
+ASTERISK_DIR = '/opt/asterisk/etc/asterisk'
 VM_USER_FILE = 'vm_futel_users.inc'
 
 def next_vm():

@@ -11,7 +11,7 @@ import statements
 
 agi = agi.AGI()
 
-RECORDING_DIR = '/opt/asterisk/var/lib/asterisk/sounds/recordings'
+RECORDING_DIR = '/opt/asterisk/var/lib/asterisk/sounds/futel/recordings'
 
 def get_username():
     return str(uuid.uuid4())

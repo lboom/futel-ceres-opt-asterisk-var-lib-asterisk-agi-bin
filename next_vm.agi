@@ -39,7 +39,7 @@ def get_pw():
         #     don't collect partial passwords, say help when user waits.
         #     For now, block forever
         TIMEOUT=-1
-        util.say('enter-a-four-digit-password-for-your-voicemail-box')
+        util.say(agi, 'enter-a-four-digit-password-for-your-voicemail-box')
         digit_0 = agi.wait_for_digit(timeout=TIMEOUT)
         digit_1 = agi.wait_for_digit(timeout=TIMEOUT)
         digit_2 = agi.wait_for_digit(timeout=TIMEOUT)
@@ -55,22 +55,22 @@ def get_pw():
 
 def say_pw(digits):
     """ Say the password. """
-    util.say('your-password-is')
+    util.say(agi, 'your-password-is')
     agi.say_digits(digits)    
-    util.say('again')
-    util.say('your-password-is')
+    util.say(agi, 'again')
+    util.say(agi, 'your-password-is')
     agi.say_digits(digits)
 
 def say_vmbox(digits):
     """ Say the voice mail box. """
-    util.say('your-voicemail-box-is')
+    util.say(agi, 'your-voicemail-box-is')
     agi.say_digits(digits)    
-    util.say('again')
-    util.say('your-voicemail-box-is')
+    util.say(agi, 'again')
+    util.say(agi, 'your-voicemail-box-is')
     agi.say_digits(digits)
 
 def say_next():
-    util.say('you-will-now-experience-the-voicemail-menu')
+    util.say(agi, 'you-will-now-experience-the-voicemail-menu')
         
 def main():
     password = get_pw()

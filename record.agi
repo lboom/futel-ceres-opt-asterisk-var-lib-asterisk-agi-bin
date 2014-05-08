@@ -51,7 +51,7 @@ def record_statements(statements):
     for statement in statements:
         prompt_and_record(agi, statement, username)
     util.say(agi, 'goodbye')
-    
+
 
 def main():
     record_statements(statements.statements)

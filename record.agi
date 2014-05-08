@@ -38,11 +38,11 @@ def statement_path(statement, username):
 
 def prompt_and_record(agi_o, statement, username):
     util.say(agi_o, 'please-repeat')
+    util.say(agi_o, 'then-press-pound')
     util.say(agi_o, statement)
     path = statement_path(statement, username)
     path_in = path  + ':gsm'
     agi_o.appexec('record', path_in)
-    util.say(agi_o, 'thank-you')
     #agi_o.appexec('playback', path) # testing
 
 def record_statements(statements):
@@ -50,6 +50,7 @@ def record_statements(statements):
     util.say(agi, 'hello')
     for statement in statements:
         prompt_and_record(agi, statement, username)
+    util.say(agi_o, 'thank-you')
     util.say(agi, 'goodbye')
 
 

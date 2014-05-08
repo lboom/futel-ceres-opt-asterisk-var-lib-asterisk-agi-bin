@@ -37,7 +37,7 @@ def statement_path(statement, username):
     return os.path.join(path, statement_to_filename(statement))
 
 def prompt_and_record(agi_o, statement, username):
-    util.say(agi_o, 'please-repeat-after-the-beep-then-press-pound')
+    util.say(agi_o, 'please-repeat')
     util.say(agi_o, statement)
     path = statement_path(statement, username)
     path_in = path  + ':gsm'

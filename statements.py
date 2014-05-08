@@ -32,7 +32,8 @@ statements = [
     'welcome-to-fewtel',
     'you-are-lucky',
 
-    'please-repeat-after-the-beep',
+    'please-repeat',
+    'after-the-beep',
     'then-press-pound',
     'thank-you',
 
